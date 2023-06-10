@@ -1,6 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Nmedia</string>
-    <string name="hello_nmedia">Hello Nmedia!</string>
     <string name="remove">Remove</string>
     <string name="content_hint">Content</string>
     <string name="content_must_not_be_empty">Content must not be empty</string>
