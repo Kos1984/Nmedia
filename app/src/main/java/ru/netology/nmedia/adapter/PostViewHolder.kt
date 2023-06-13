@@ -36,6 +36,7 @@ class PostViewHolder(
             }
 
             moreVertView.setOnClickListener {
+                // создаем выпадающее меню
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_options)
                     setOnMenuItemClickListener { item ->
