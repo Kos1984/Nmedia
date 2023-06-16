@@ -6,4 +6,20 @@
     </style>
 
     <style name="Theme.Nmedia" parent="Base.Theme.Nmedia" />
+    <style name="LikeStyle" parent="Widget.Material3.Button.TextButton">
+        <item name="iconTint">@color/like_button_tint</item>
+    </style>
+
+    <style name="ShareStyle" parent="Widget.Material3.Button.TextButton">
+        <item name="iconTint">@color/share_button_tint</item>
+    </style>
+
+    <style name="MenuStyle" parent="Widget.Material3.Button.IconButton.Outlined">
+        <item name="iconTint">@color/menu_button_tint</item>
+    </style>
+
+
+
+
+
 </resources>
