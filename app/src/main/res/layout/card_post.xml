@@ -47,21 +47,20 @@
         app:layout_constraintTop_toBottomOf="@id/authorTextView"
         />
 
+
     <Button
         android:id="@+id/moreVertView"
-        android:background ="@android:color/transparent"
-        android:layout_width="wrap_content"
+        style="@style/MenuStyle"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:icon="@drawable/baseline_more_vert_24"
+        app:iconSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="0dp"
-        app:iconSize="24dp"
-        app:icon="@drawable/baseline_more_vert_24"
-        style="@style/MenuStyle"
-        app:tint="@color/menu_button_tint"
-        />
-
+        app:tint="@color/menu_button_tint" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"

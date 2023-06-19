@@ -14,11 +14,9 @@
         <item name="iconTint">@color/share_button_tint</item>
     </style>
 
-    <style name="MenuStyle" parent="Widget.Material3.Button.IconButton.Outlined">
+    <style name="MenuStyle" parent="Widget.Material3.Button.OutlinedButton">
         <item name="iconTint">@color/menu_button_tint</item>
     </style>
-
-
 
 
 
