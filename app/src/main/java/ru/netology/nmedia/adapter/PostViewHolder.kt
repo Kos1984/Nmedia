@@ -2,8 +2,6 @@ package ru.netology.nmedia.adapter
 
 import android.view.View
 import android.widget.PopupMenu
-import androidx.activity.result.launch
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.PostService
@@ -38,7 +36,12 @@ class PostViewHolder(
                 listener.onShare(post)
 
             }
-            if (post.videoUrl != null) postVideoGroup.visibility = View.VISIBLE
+
+            if (post.videoUrl != null) {
+                postVideoGroup.visibility = View.VISIBLE
+            } else{
+                postVideoGroup.visibility = View.GONE
+            }
 
             moreVertView.setOnClickListener {
                 // создаем выпадающее меню

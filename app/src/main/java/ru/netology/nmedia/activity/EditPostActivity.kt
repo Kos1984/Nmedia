@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContract
 import ru.netology.nmedia.databinding.ActivityEditPostBinding
 
@@ -12,6 +13,15 @@ class EditPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityEditPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // при нажатии системной кнопки "назад" делаем отмену редактирования
+        this.onBackPressedDispatcher.addCallback(
+            this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    setResult(RESULT_CANCELED, intent)
+                    finish()
+                }
+            }
+        )
 
         // берем контент из поста через intent
         binding.contentEdit.setText(intent?.getStringExtra(Intent.EXTRA_TEXT))
