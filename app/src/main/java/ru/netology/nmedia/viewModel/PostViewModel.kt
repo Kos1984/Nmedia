@@ -1,5 +1,4 @@
 package ru.netology.nmedia.viewModel
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +17,7 @@ class PostViewModel : ViewModel() {
         shareCount = 0,
         likesCount = 0,
         likedByMe = false,
+        videoUrl = null
     )
     private var repository: PostRepository = PostRepositoryInMemory()
     val data: LiveData<List<Post>> = repository.getData()
@@ -37,10 +37,6 @@ class PostViewModel : ViewModel() {
 
     fun edit(post: Post){
         edited.value = post
-    }
-
-    fun clearEdit(){
-        edited.value = empty
     }
 
     fun changeContent(content: String){

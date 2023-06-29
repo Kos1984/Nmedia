@@ -1,6 +1,9 @@
 package ru.netology.nmedia.adapter
 
+import android.view.View
 import android.widget.PopupMenu
+import androidx.activity.result.launch
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.PostService
@@ -23,13 +26,19 @@ class PostViewHolder(
             likeImageView.text = PostService.countToString(post.likesCount)
             shareImageView.text = PostService.countToString(post.shareCount)
 
+            VideoView.setOnClickListener {
+                listener.onWatch(post)
+            }
+
             likeImageView.setOnClickListener {
                 listener.onLike(post)
 
             }
             shareImageView.setOnClickListener {
                 listener.onShare(post)
+
             }
+            if (post.videoUrl != null) postVideoGroup.visibility = View.VISIBLE
 
             moreVertView.setOnClickListener {
                 // создаем выпадающее меню
@@ -43,6 +52,8 @@ class PostViewHolder(
                             }
                             R.id.edit -> {
                                 listener.onEdit(post)
+
+
                                 true
                             }
                             else -> false

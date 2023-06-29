@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/avatarView"
@@ -78,7 +78,32 @@
         android:layout_marginBottom="16dp"
         android:text="@sample/posts.json/data/content"
         app:layout_constraintTop_toTopOf="@id/barrier"
+        app:layout_constraintBottom_toTopOf="@id/VideoView"/>
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/postVideoGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="1"
+        android:background="@android:color/background_light"
+        android:visibility="gone"
+        app:constraint_referenced_ids="VideoView, VideoTitleView" />
+
+    <ImageView
+        android:id="@+id/VideoView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@id/VideoTitleView"
+        android:src="@drawable/film1"
+        />
+    <TextView
+        android:id="@+id/VideoTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_nmedia"
         app:layout_constraintBottom_toTopOf="@id/barrier2"/>
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
@@ -139,6 +164,8 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/viewsImageView" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

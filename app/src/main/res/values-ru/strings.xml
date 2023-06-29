@@ -4,6 +4,7 @@
     <string name="hello_nmedia">Привет НМедиа</string>
     <string name="remove">Удалить</string>
     <string name="content_hint">Содержание</string>
-    <string name="content_must_not_be_empty">Content must not be empty</string>
+    <string name="content_must_not_be_empty">Контент не может быть пустым</string>
     <string name="edit">Редактировать</string>
+    <string name="share">Поделиться</string>
 </resources>
