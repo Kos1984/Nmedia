@@ -9,4 +9,5 @@ data class Post(
     val shareCount: Long,
     val likesCount: Long,
     val likedByMe: Boolean = false,
+    val videoUrl: String?
 )

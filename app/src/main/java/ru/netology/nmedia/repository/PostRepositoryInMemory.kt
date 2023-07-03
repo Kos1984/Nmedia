@@ -21,6 +21,7 @@ class PostRepositoryInMemory : PostRepository {
             shareCount = 1,
             likesCount = 1,
             likedByMe = false,
+            videoUrl = "https://rutube.ru/video/903bab91e9a3a6c4d23fbe5f447d5987/",
         )
 
 

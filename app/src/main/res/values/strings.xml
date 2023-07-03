@@ -5,4 +5,5 @@
     <string name="content_hint">Content</string>
     <string name="content_must_not_be_empty">Content must not be empty</string>
     <string name="edit">Edit</string>
+    <string name="share">Share</string>
 </resources>

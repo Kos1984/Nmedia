@@ -18,6 +18,11 @@
         <item name="iconTint">@color/menu_button_tint</item>
     </style>
 
+    <style name="cancelStyle" parent="Widget.Material3.Button.Icon">
+        <item name="iconTint" >@color/menu_button_tint</item>
+    </style>
+
+
 
 
 </resources>

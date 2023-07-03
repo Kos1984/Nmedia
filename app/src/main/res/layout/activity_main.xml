@@ -5,80 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/editCopy"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/card_post"
-         />
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/card_post" />
 
-    <ImageView
-        android:id="@+id/saveView"
-        app:srcCompat="@drawable/baseline_send_24"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="10"
-        android:background="@android:color/transparent"
-        android:hint="@string/content_hint"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:padding="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/saveView"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:constraint_referenced_ids="editView,editCopy,cancelView" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="content"
-        />
-
-    <ImageView
-        android:id="@+id/editView"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/baseline_edit_24"
-        app:layout_constraintBottom_toTopOf="@+id/barrier3"
-        app:layout_constraintStart_toStartOf="parent" />
-    <TextView
-        android:id="@+id/editCopy"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:text="edit"
-        app:layout_constraintBottom_toTopOf="@id/barrier3"
-        app:layout_constraintStart_toEndOf="@id/editView"
-        app:layout_constraintEnd_toStartOf="@id/cancelView"
-        />
-    <ImageView
-        android:id="@+id/cancelView"
-        android:src="@drawable/outline_cancel_24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/barrier3"
-        />
-
-
-
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:srcCompat="@drawable/baseline_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
