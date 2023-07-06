@@ -1,12 +1,17 @@
 package ru.netology.nmedia.viewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemory
+import ru.netology.nmedia.repository.PostRepositorySharePrefsImpl
 
-class PostViewModel : ViewModel() {
+class PostViewModel(
+    application: Application // добавили параметр
+) : AndroidViewModel(application) { // изменили наследование было ViewModel
 
     private val empty = Post(
         id = 0,
@@ -19,7 +24,7 @@ class PostViewModel : ViewModel() {
         likedByMe = false,
         videoUrl = null
     )
-    private var repository: PostRepository = PostRepositoryInMemory()
+    private var repository: PostRepository = PostRepositorySharePrefsImpl(application)
     val data: LiveData<List<Post>> = repository.getData()
     fun likeById(id: Long) = repository.likeById(id)
     fun shareById(id: Long) = repository.shareById(id)

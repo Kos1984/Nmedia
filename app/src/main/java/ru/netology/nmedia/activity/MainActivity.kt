@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         val viewModel: PostViewModel  by viewModels()
+
         val newPostContract = registerForActivityResult(NewPostActivity.Contract) {result ->
             result ?: return@registerForActivityResult
             viewModel.changeContent(result)
