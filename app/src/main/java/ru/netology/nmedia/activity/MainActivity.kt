@@ -14,7 +14,7 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,12 +22,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         val viewModel: PostViewModel  by viewModels()
-        val newPostContract = registerForActivityResult(NewPostActivity.Contract) {result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContent(result)
-            viewModel.save()
 
-        }
+
 
         val editPostContract = registerForActivityResult(EditPostActivity.ContractEdit) {result ->
             result ?: return@registerForActivityResult
@@ -71,6 +67,13 @@ class MainActivity : AppCompatActivity() {
         }
         )
 
+        val newPostContract = registerForActivityResult(NewPostActivity.Contract) {result ->
+            result ?: return@registerForActivityResult
+            viewModel.changeContent(result)
+            viewModel.save()
+
+        }
+
         activityMainBinding.addPostButton.setOnClickListener {
             newPostContract.launch()
         }
@@ -80,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.list.adapter = adapter
-
     }
 }
 
