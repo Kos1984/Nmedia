@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.launch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.R
+import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.adapter.PostListener
 import ru.netology.nmedia.databinding.FragmentFeedBinding
@@ -32,14 +32,6 @@ class FeedFragment() : Fragment() { // сменили MainActivity на FeedFrag
         //ownerProducer = ::requireParentFragment объеденяет вьюмодели
         val viewModel: PostViewModel  by viewModels( ownerProducer = ::requireParentFragment)
 
-
-
-        val editPostContract = registerForActivityResult(EditPostActivity.ContractEdit) {result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContent(result)
-            viewModel.save()
-
-        }
         val adapter = PostAdapter( object : PostListener{
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
@@ -70,18 +62,15 @@ class FeedFragment() : Fragment() { // сменили MainActivity на FeedFrag
 
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
-                editPostContract.launch(post.content)
-
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_newPostFragment,
+                    Bundle().apply {
+                        textArg = post.content
+                    })
             }
         }
         )
 
-        val newPostContract = registerForActivityResult(NewPostFragment.Contract) { result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContent(result)
-            viewModel.save()
-
-        }
 
         activityMainBinding.addPostButton.setOnClickListener {
             findNavController().navigate(R.id.action_feedFragment_to_newPostFragment) // вместо запуска контракта пользуемся переходом по фрагментам
