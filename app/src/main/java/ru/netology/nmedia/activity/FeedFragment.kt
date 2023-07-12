@@ -2,26 +2,35 @@ package ru.netology.nmedia.activity
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.result.launch
-import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.adapter.PostListener
-import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 
 
-class MainActivity() : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class FeedFragment() : Fragment() { // сменили MainActivity на FeedFragment
 
-        val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(activityMainBinding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-        val viewModel: PostViewModel  by viewModels()
+        val activityMainBinding = FragmentFeedBinding.inflate(layoutInflater, container, false)
+
+        //view models теперь наследуется от fragmentKtx
+        //ownerProducer = ::requireParentFragment объеденяет вьюмодели
+        val viewModel: PostViewModel  by viewModels( ownerProducer = ::requireParentFragment)
 
 
 
@@ -33,7 +42,7 @@ class MainActivity() : AppCompatActivity() {
         }
         val adapter = PostAdapter( object : PostListener{
             override fun onLike(post: Post) {
-               viewModel.likeById(post.id)
+                viewModel.likeById(post.id)
             }
 
             override fun onWatch(post: Post) {
@@ -67,7 +76,7 @@ class MainActivity() : AppCompatActivity() {
         }
         )
 
-        val newPostContract = registerForActivityResult(NewPostActivity.Contract) {result ->
+        val newPostContract = registerForActivityResult(NewPostFragment.Contract) { result ->
             result ?: return@registerForActivityResult
             viewModel.changeContent(result)
             viewModel.save()
@@ -75,14 +84,19 @@ class MainActivity() : AppCompatActivity() {
         }
 
         activityMainBinding.addPostButton.setOnClickListener {
-            newPostContract.launch()
+            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment) // вместо запуска контракта пользуемся переходом по фрагментам
         }
 
-        viewModel.data.observe(this) { posts ->
+        viewModel.data.observe(viewLifecycleOwner) { posts -> // сменили владельца
             adapter.submitList(posts)
         }
 
         activityMainBinding.list.adapter = adapter
+
+        return activityMainBinding.root
     }
+
+
+
 }
 
