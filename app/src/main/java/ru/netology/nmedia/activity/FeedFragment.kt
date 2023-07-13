@@ -33,6 +33,7 @@ class FeedFragment() : Fragment() { // сменили MainActivity на FeedFrag
         val viewModel: PostViewModel  by viewModels( ownerProducer = ::requireParentFragment)
 
         val adapter = PostAdapter( object : PostListener{
+
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
             }
@@ -40,6 +41,15 @@ class FeedFragment() : Fragment() { // сменили MainActivity на FeedFrag
             override fun onWatch(post: Post) {
                 val intentVideo = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
                 startActivity(intentVideo)
+            }
+
+            override fun onWatchPost(post: Post) {
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_postFragment,
+                    Bundle().apply {
+                        putLong("id", post.id)
+                    }
+                )
             }
 
             override fun onShare(post: Post) {
@@ -66,7 +76,8 @@ class FeedFragment() : Fragment() { // сменили MainActivity на FeedFrag
                     R.id.action_feedFragment_to_newPostFragment,
                     Bundle().apply {
                         textArg = post.content
-                    })
+                    }
+                )
             }
         }
         )
