@@ -13,6 +13,8 @@ interface PostListener {
     fun onEdit(post: Post)
 
     fun onWatch(post: Post)
+
+    fun onWatchPost(post: Post)
 }
 class PostAdapter(
     private val listener: PostListener

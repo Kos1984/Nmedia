@@ -7,7 +7,7 @@ import ru.netology.nmedia.Post
 import ru.netology.nmedia.PostService
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
-
+//класс отвечает за разметку поста
 class PostViewHolder(
     private val binding: CardPostBinding,
     private val listener: PostListener,
@@ -23,6 +23,12 @@ class PostViewHolder(
             likeImageView.isChecked = post.likedByMe
             likeImageView.text = PostService.countToString(post.likesCount)
             shareImageView.text = PostService.countToString(post.shareCount)
+
+            root.setOnClickListener {
+                listener.onWatchPost(post)
+
+            }
+
 
             VideoView.setOnClickListener {
                 listener.onWatch(post)
