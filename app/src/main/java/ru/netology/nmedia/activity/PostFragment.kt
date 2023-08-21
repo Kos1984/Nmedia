@@ -82,7 +82,7 @@ class PostFragment: Fragment(){
         )
 
 
-        // подпичываемс на изменения
+        // подписываемся на изменения
         viewModel.data.observe(viewLifecycleOwner) { posts ->
             val post = posts.find { it.id == postId }
             holder.bind(post!!)

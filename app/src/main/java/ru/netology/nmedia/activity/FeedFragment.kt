@@ -18,7 +18,7 @@ import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 
 
-class FeedFragment() : Fragment() { // сменили MainActivity на FeedFragment
+class FeedFragment : Fragment() { // сменили MainActivity на FeedFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -90,6 +90,8 @@ class FeedFragment() : Fragment() { // сменили MainActivity на FeedFrag
         viewModel.data.observe(viewLifecycleOwner) { posts -> // сменили владельца
             adapter.submitList(posts)
         }
+
+        activityMainBinding.list.smoothScrollToPosition(adapter.itemCount + 0 ) // делаем скролл экрана к последнему посту
 
         activityMainBinding.list.adapter = adapter
 
