@@ -3,8 +3,8 @@ package ru.netology.nmedia.adapter
 import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import ru.netology.nmedia.Post
-import ru.netology.nmedia.PostService
+import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.dto.PostService
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 //класс отвечает за разметку поста

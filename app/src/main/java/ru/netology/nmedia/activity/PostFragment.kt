@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.nmedia.Post
+import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.adapter.PostListener
@@ -31,9 +31,6 @@ class PostFragment: Fragment(){
         val viewModel: PostViewModel by viewModels( ownerProducer = ::requireParentFragment)
         val posts = viewModel.data
         val post = posts.value?.find { it.id == postId }
-
-
-
 
 
         val holder = PostViewHolder(binding.postWatch, object : PostListener {
