@@ -76,6 +76,8 @@ class FeedFragment : Fragment() { // сменили MainActivity на FeedFragme
                     R.id.action_feedFragment_to_newPostFragment,
                     Bundle().apply {
                         textArg = post.content
+
+
                     }
                 )
             }

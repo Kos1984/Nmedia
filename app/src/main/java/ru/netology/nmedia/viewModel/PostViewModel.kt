@@ -5,8 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.db.AppDb
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.repository.PostDraftRepository
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositorySQLiteImpl
+
 
 
 class PostViewModel(
@@ -25,6 +27,7 @@ class PostViewModel(
         videoUrl = null
     )
     private var repository: PostRepository = PostRepositorySQLiteImpl(AppDb.getInstance(application).postDao)
+    var postDraft = PostDraftRepository(application) // пробрасываем в new post fragment
     val data: LiveData<List<Post>> = repository.getAll()
     fun likeById(id: Long) = repository.likeById(id)
     fun shareById(id: Long) = repository.shareById(id)
