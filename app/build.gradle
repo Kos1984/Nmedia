@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -44,6 +45,8 @@ dependencies {
     def mdc_version = "1.9.0"
     def gson_version = "2.10.1"
     def room_version = "2.5.1"
+    def play_services_base_version = "18.2.0"
+    def firebase_version = "32.0.0"
 
 
     implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
@@ -60,6 +63,10 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    implementation platform("com.google.firebase:firebase-bom:$firebase_version")
+    implementation "com.google.firebase:firebase-messaging-ktx"
+    implementation "com.google.android.gms:play-services-base:$play_services_base_version"
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
