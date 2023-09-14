@@ -7,7 +7,7 @@ import ru.netology.nmedia.dto.Post
 
 
 class PostDraftRepository(context: Context) { // класс для сохранения и чтения черновика нового поста  в SharedPreferences
-    private val gson = Gson()
+
     private val prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
     private val key = "draft"
 
